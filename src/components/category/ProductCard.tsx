@@ -1,8 +1,9 @@
 import type { Product } from "./types";
+import { Button } from "@/components/ui/button";
 
-export function ProductCard({ image, secondaryImage, category, name, description, price, href }: Product) {
+export function ProductCard({ image, secondaryImage, category, name, description, price, href, buttonLabel }: Product) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-soft transition-shadow hover:shadow-soft-lg">
+    <article className="product-card group flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-soft transition-shadow hover:shadow-soft-lg">
       <div className="relative">
         <img src={image} alt={name} loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full object-cover" />
         {secondaryImage && (
@@ -12,22 +13,21 @@ export function ProductCard({ image, secondaryImage, category, name, description
             loading="lazy"
             width={1024}
             height={768}
-            className="absolute -bottom-8 right-5 h-24 w-24 rounded-xl border-4 border-card object-cover shadow-soft sm:h-28 sm:w-28"
+            className="absolute bottom-2 right-2 h-12 w-12 rounded-md border-2 border-card object-cover shadow-soft"
           />
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-6 pt-8 sm:p-8 sm:pt-10">
-        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">{category}</span>
-        <h3 className="font-display text-3xl leading-tight text-primary">{name}</h3>
-        <p className="leading-relaxed text-muted-foreground">{description}</p>
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
-          {price ? <span className="font-display text-2xl text-foreground">{price}</span> : <span />}
-          <a
-            href={href}
-            className="rounded-full bg-primary px-6 py-3 text-xs font-semibold tracking-[0.2em] text-primary-foreground transition-colors hover:bg-sage"
-          >
-            CONHECER SOLUÇÃO
-          </a>
+      <div className="flex flex-1 flex-col gap-2 p-3.5">
+        <span className="text-[10px] font-semibold uppercase text-muted-foreground">{category}</span>
+        <h3 className="font-display text-2xl leading-tight text-primary">{name}</h3>
+        <p className="text-xs leading-relaxed text-muted-foreground">{description}</p>
+        <div className="mt-auto grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 border-t border-border pt-3">
+          {price ? <span className="min-w-0 font-display text-lg text-foreground">{price}</span> : <span />}
+          <Button asChild size="sm" className="h-8 rounded-full px-3 text-[9px] font-semibold shadow-none">
+            <a href={href} title={href === "#" ? "Endereço provisório — aguardando link definitivo" : undefined} onClick={href === "#" ? (event) => event.preventDefault() : undefined}>
+              {buttonLabel}
+            </a>
+          </Button>
         </div>
       </div>
     </article>
