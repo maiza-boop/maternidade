@@ -52,7 +52,7 @@ export function CategoryPage({ data }: { data: CategoryData }) {
               </Button>; })}
             </nav>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 md:grid-cols-1">
-              {data.sidebarNotes.map((note) => <Button key={note.title} asChild variant="link" className="block h-auto whitespace-normal rounded-none border-t-2 border-accent-strong/50 p-0 pt-3 text-left no-underline hover:no-underline"><ConfiguredLink href={note.href} className="group"><h3 className="flex items-start justify-between gap-2 text-xs font-bold uppercase text-accent-strong group-hover:underline">{note.title}<ArrowUpRight className="shrink-0" aria-hidden="true" /></h3><p className="mt-1 text-xs font-normal leading-relaxed text-foreground">{note.text}</p></ConfiguredLink></Button>)}
+              {data.sidebarNotes.map((note) => <Button key={note.title} asChild variant="link" className={`block h-auto whitespace-normal text-left no-underline hover:no-underline ${note.tone ? "sidebar-area rounded-md border p-3" : "rounded-none border-t-2 border-accent-strong/50 p-0 pt-3"}`}><ConfiguredLink href={note.href} data-tone={note.tone} className="group"><h3 className="flex items-start justify-between gap-2 text-xs font-bold uppercase text-accent-strong group-hover:underline"><span className="min-w-0">{note.title}</span><ArrowUpRight className="shrink-0" aria-hidden="true" /></h3><p className="mt-1 text-xs font-normal leading-relaxed text-foreground">{note.text}</p>{note.complementaryText && <p className="mt-2 text-xs font-normal leading-relaxed text-foreground">{note.complementaryText}</p>}</ConfiguredLink></Button>)}
             </div>
           </aside>
           <section id="produtos" className="min-w-0" aria-labelledby="products-title">
