@@ -72,7 +72,7 @@ export function CategoryPage({ data }: { data: CategoryData }) {
                 key={highlight.name}
                 className={`flex flex-col rounded-2xl px-6 py-8 shadow-soft-lg sm:px-8 sm:py-10 ${highlight.tone === "leaf" ? "bg-primary text-primary-foreground" : "bg-terracotta text-primary-foreground"}`}
               >
-                <p className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-accent">
+                <p className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-gold">
                   <span className="h-px w-5 bg-gold" />
                   {highlight.eyebrow}
                 </p>
