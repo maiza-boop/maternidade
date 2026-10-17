@@ -5,7 +5,12 @@ Esta página não é um modelo JSON do Elementor. Sua reprodução é manual.
 ## Conteúdo
 `src/data/categories/maternidade.ts` reúne marca, apresentação, categorias, textos laterais, produtos, chamada para afiliados, botões e rodapé. Duplique esse arquivo para preparar outra categoria. Cada produto possui imagem, imagem secundária opcional, categoria, nome, descrição, preço opcional, texto do botão e endereço individual.
 
-Os endereços `#` estão identificados por comentários e pelo título exibido ao passar o ponteiro. Substitua-os pelos destinos reais antes de divulgar a página. Os preços de exemplo existentes foram preservados, não validados como preços comerciais.
+Os endereços comerciais `#` estão identificados por comentários e pelo título exibido ao passar o ponteiro. Substitua-os pelos destinos reais antes de divulgar a página. Os preços de exemplo existentes foram preservados, não validados como preços comerciais. Os dois novos produtos fictícios têm `provisional: true`, nomes identificados e preços fictícios.
+
+## Destinos das áreas
+`src/data/areas.ts` centraliza os endereços de Maternidade, Fé na Família (Caminhando com Deus), Renda & Empreendedorismo e Afiliados. Altere o `href` da área para trocar seu destino; `communityHref` fica disponível para a futura comunidade própria. A lateral e o botão de afiliados usam esses endereços. Uma única página provisória reutilizável atende `/areas/fe-na-familia`, `/areas/renda-e-empreendedorismo` e `/areas/afiliados`, sem cadastro, comissões ou rastreamento. Adicione áreas gradualmente ao registro, com uma página correspondente antes de usá-las na navegação.
+
+Cada produto mantém uma única descrição completa. O trecho inicial é calculado pela vitrine e o botão Leia mais/Ler menos expande o texto no próprio cartão, independentemente dos demais.
 
 ## Seções no Elementor
 1. Cabeçalho verde: marca e navegação.
