@@ -8,3 +8,6 @@
 - [x] Centralizar destinos configuráveis e criar página provisória reutilizável para as três áreas.
 - [x] Conferir navegação, testes e leitura no computador e celular.
 - [x] Cadastrar os 23 produtos de maternidade em 10 categorias, com categorias múltiplas e preços provisórios.
+- [x] Cadastrar três livros em breve, costura e quatro produtos de cartas/oração com as associações solicitadas.
+- [x] Remover somente (provisório) dos preços existentes e verificar filtros e preservação.
+- [ ] Associar as oito capas reais: aguardando envio dos arquivos pelo usuário.

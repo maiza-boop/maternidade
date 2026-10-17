@@ -13,3 +13,4 @@
 - Define identity colors and layout spacing in global semantic CSS tokens; this keeps presentation editable without changing category content.
 - Keep cross-area destinations and optional communities in the typed area registry, with a shared provisional area route and configurable links; this enables gradual expansion without duplicating unfinished pages.
 - Keep product filtering and description excerpts in browser-safe pure helpers; this allows testing behavior while preserving each original full description.
+- Model books as a distinct variant in the shared product type and card, and allow absent cover images; this prevents purchase controls and fictitious prices on upcoming books or mismatched image fallbacks.
