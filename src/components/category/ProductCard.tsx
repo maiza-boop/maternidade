@@ -1,33 +1,43 @@
+import { useState } from "react";
 import type { Product } from "./types";
 import { Button } from "@/components/ui/button";
 
-export function ProductCard({ image, secondaryImage, category, name, description, price, href, buttonLabel }: Product) {
+type Labels = { learnLabel: string; buyLabel: string; readMore: string; readLess: string };
+
+const pending = (href: string) =>
+  href === "#" ? { title: "Link ainda não configurado", onClick: (e: React.MouseEvent) => e.preventDefault() } : {};
+
+export function ProductCard({ product, labels }: { product: Product; labels: Labels }) {
+  const { image, secondaryImage, category, name, description, price, href, checkoutHref } = product;
+  const [open, setOpen] = useState(false);
+  const long = description.length > 90;
   return (
-    <article className="product-card group flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-soft transition-shadow hover:shadow-soft-lg">
+    <article className="product-card flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-soft transition-shadow hover:shadow-soft-lg">
       <div className="relative">
         <img src={image} alt={name} loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full object-cover" />
-        {secondaryImage && (
-          <img
-            src={secondaryImage}
-            alt=""
-            loading="lazy"
-            width={1024}
-            height={768}
-            className="absolute bottom-2 right-2 h-12 w-12 rounded-md border-2 border-card object-cover shadow-soft"
-          />
-        )}
+        {secondaryImage && <img src={secondaryImage} alt="" loading="lazy" width={1024} height={768} className="absolute bottom-2 right-2 h-12 w-12 rounded-md border-2 border-card object-cover shadow-soft" />}
       </div>
       <div className="flex flex-1 flex-col gap-2 p-3.5">
-        <span className="text-[10px] font-semibold uppercase text-muted-foreground">{category}</span>
-        <h3 className="font-display text-2xl leading-tight text-primary">{name}</h3>
-        <p className="text-xs leading-relaxed text-muted-foreground">{description}</p>
-        <div className="mt-auto grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 border-t border-border pt-3">
-          {price ? <span className="min-w-0 font-display text-lg text-foreground">{price}</span> : <span />}
-          <Button asChild size="sm" className="h-8 rounded-full px-3 text-[9px] font-semibold shadow-none">
-            <a href={href} title={href === "#" ? "Endereço provisório — aguardando link definitivo" : undefined} onClick={href === "#" ? (event) => event.preventDefault() : undefined}>
-              {buttonLabel}
-            </a>
-          </Button>
+        <span className="text-[11px] font-bold uppercase tracking-wide text-accent-strong">{category}</span>
+        <h3 className="font-display text-2xl font-bold leading-tight text-primary-strong">{name}</h3>
+        <p className="break-words text-sm leading-relaxed text-foreground">
+          {long && !open ? `${description.slice(0, 90).trimEnd()}… ` : `${description} `}
+          {long && (
+            <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className="font-semibold text-accent-strong underline underline-offset-2">
+              {open ? labels.readLess : labels.readMore}
+            </button>
+          )}
+        </p>
+        <div className="mt-auto border-t border-border pt-3">
+          <p className="mb-2 font-display text-2xl font-bold text-primary-strong">{price}</p>
+          <div className="grid grid-cols-1 gap-2 min-[400px]:grid-cols-2">
+            <Button asChild size="sm" variant="outline" className="h-9 rounded-full border-primary px-2 text-[11px] font-semibold text-primary-strong shadow-none">
+              <a href={href} {...pending(href)}>{labels.learnLabel}</a>
+            </Button>
+            <Button asChild size="sm" className="h-9 rounded-full bg-accent-strong px-2 text-[11px] font-bold text-primary-foreground shadow-none hover:bg-accent-strong/90">
+              <a href={checkoutHref} {...pending(checkoutHref)}>{labels.buyLabel}</a>
+            </Button>
+          </div>
         </div>
       </div>
     </article>

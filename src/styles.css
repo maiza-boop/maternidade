@@ -47,6 +47,8 @@
   --color-ring: var(--ring);
   --color-sage: var(--sage);
   --color-gold: var(--gold);
+  --color-primary-strong: var(--primary-strong);
+  --color-accent-strong: var(--accent-strong);
   --font-display: "Cormorant Garamond", serif;
   --font-sans: "Karla", sans-serif;
   --shadow-soft: var(--shadow-soft);
@@ -90,6 +92,8 @@
   --accent-foreground: var(--brand-brown);
   --sage: var(--brand-leaf);
   --gold: var(--brand-gold);
+  --primary-strong: color-mix(in oklch, var(--brand-leaf) 70%, black);
+  --accent-strong: color-mix(in oklch, var(--brand-terracotta) 82%, var(--brand-brown));
   --destructive: var(--brand-terracotta);
   --destructive-foreground: var(--brand-brown);
   --border: color-mix(in oklch, var(--brand-cream) 75%, var(--brand-gold));
