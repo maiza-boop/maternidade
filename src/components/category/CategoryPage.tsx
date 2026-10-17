@@ -67,9 +67,9 @@ export function CategoryPage({ data }: { data: CategoryData }) {
           </section>
         </div>
 
-        {data.highlights.length > 0 && (
+        {highlights.length > 0 && (
           <section aria-label="Destaques das áreas" className="grid gap-4 pb-12 md:grid-cols-2">
-            {data.highlights.map((highlight) => (
+            {highlights.map((highlight) => (
               <article
                 key={highlight.name}
                 className={`flex flex-col rounded-2xl px-6 py-8 shadow-soft-lg sm:px-8 sm:py-10 ${highlight.tone === "leaf" ? "bg-primary text-primary-foreground" : "bg-terracotta text-primary-foreground"}`}
