@@ -36,6 +36,8 @@ export const maternidade: CategoryData = {
     { name: "Culinária e Renda na Cozinha", image: p2 },
     { name: "Artesanato e Criatividade", image: p3 },
     { name: "Festas e Personalizados", image: p2 },
+    { name: "Livros" },
+    { name: "Fé na Família" },
   ],
   sidebarNotes: [
     { title: "Fé na família", text: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus.", href: areas.espiritual.href },
@@ -59,7 +61,8 @@ export const maternidade: CategoryData = {
     signature: "com carinho, para cada fase.",
   },
   // Cada produto é independente: duplique um bloco para criar outro.
-  // PROVISÓRIO: preços "R$ 0,00 (provisório)", descrições iniciais e links "#" aguardam dados reais.
+  // Preços editáveis mantidos em R$ 0,00; links "#" aguardam os endereços reais.
+  // Capas dos oito novos produtos aguardam envio; não usar fotos de outros produtos.
   products: [
     { provisional: true, category: "Alimentação e Nutrição", extraCategories: ["Amamentação"], name: "Mamãe Nutre", image: p2, description: "Material voltado à alimentação da mãe durante a maternidade, com orientações para apoiar escolhas mais conscientes no dia a dia da família.", price: "R$ 0,00 (provisório)", href: "#", checkoutHref: "#" },
     { provisional: true, category: "Amamentação", name: "Amamente Sem Dor", image: p1, description: "Material de apoio para mães que desejam entender melhor a amamentação e viver esse momento com mais tranquilidade e informação.", price: "R$ 0,00 (provisório)", href: "#", checkoutHref: "#" },
