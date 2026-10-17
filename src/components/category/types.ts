@@ -31,6 +31,19 @@ export type Affiliate = {
   href: string;
 };
 
+export type CategoryHighlight = {
+  /** Pequena chamada acima do nome do destaque. */
+  eyebrow: string;
+  /** Nome principal do destaque. */
+  name: string;
+  description: string;
+  buttonLabel: string;
+  /** Destino configurável; manter vindo de areas.ts. */
+  href: string;
+  /** Tonalidade do bloco: "leaf" (verde) ou "terra" (rosé-terra). */
+  tone: "leaf" | "terra";
+};
+
 export type CategoryData = {
   title: string;
   subtitle: string;
