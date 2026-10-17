@@ -2,8 +2,12 @@ import { ProductCard } from "./ProductCard";
 import type { CategoryData } from "./types";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
+import { useState } from "react";
 
 export function CategoryPage({ data }: { data: CategoryData }) {
+  const [selected, setSelected] = useState<string | null>(null);
+  const products = selected ? data.products.filter((p) => p.category === selected) : data.products;
+  const filters = [{ name: data.allLabel, value: null as string | null, image: undefined as string | undefined }, ...data.categories.map((c) => ({ name: c.name, value: c.name as string | null, image: c.image }))];
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground">
@@ -22,40 +26,39 @@ export function CategoryPage({ data }: { data: CategoryData }) {
       </header>
 
       <main className="site-width">
-        <section id="maternidade" className="category-intro grid items-center gap-7 py-7 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:gap-16">
+        <section id="maternidade" className="category-intro grid items-center gap-5 py-5 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:gap-10">
           <div className="min-w-0">
-            <div className="mb-2 flex items-center gap-2 text-[10px] uppercase text-primary"><span className="h-px w-5 bg-gold" />{data.hero.eyebrow}</div>
-            <h1 className="font-display text-4xl uppercase text-primary sm:text-5xl">{data.title}</h1>
-            <p className="mt-2 max-w-lg text-sm text-muted-foreground">{data.subtitle}</p>
-            <p className="mt-3 font-display text-xl italic text-primary">{data.hero.note}</p>
-            <p className="mt-4 max-w-lg text-xs leading-relaxed text-muted-foreground">{data.intro}</p>
+            <div className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase text-accent-strong"><span className="h-px w-5 bg-gold" />{data.hero.eyebrow}</div>
+            <h1 className="font-display text-4xl font-bold uppercase text-primary-strong sm:text-5xl">{data.title}</h1>
+            <p className="mt-2 max-w-lg text-sm text-foreground">{data.subtitle}</p>
+            <p className="mt-3 font-display text-xl italic text-primary-strong">{data.hero.note}</p>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-foreground">{data.intro}</p>
           </div>
           <div className="rounded-2xl border border-gold/40 p-2">
-            <img src={data.hero.image} alt={data.hero.alt} width={1024} height={768} fetchPriority="high" className="aspect-[16/9] w-full rounded-xl object-cover" />
+            <img src={data.hero.image} alt={data.hero.alt} width={1024} height={768} fetchPriority="high" className="aspect-[16/9] max-h-56 w-full rounded-xl object-cover" />
           </div>
         </section>
 
         <div className="catalog-layout grid items-start gap-6 pb-12">
           <aside id="categorias" className="min-w-0 rounded-lg border border-border p-3">
-            <h2 className="mb-3 font-display text-2xl text-primary">{data.categoriesTitle}</h2>
+            <h2 className="mb-3 font-display text-2xl font-bold text-primary-strong">{data.categoriesTitle}</h2>
             <nav aria-label={data.categoriesTitle} className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-1">
-              {data.categories.map((category, index) => <Button key={category.name} asChild variant={index === 0 ? "default" : "outline"} className="h-auto min-h-11 justify-start gap-2 whitespace-normal px-2 py-1.5 text-left text-[11px] shadow-none">
-                <a href={category.href} title={category.href === "#" ? "Endereço provisório — aguardando link definitivo" : undefined} onClick={category.href === "#" ? (event) => event.preventDefault() : undefined}>
-                  {category.image && <img src={category.image} alt="" loading="lazy" className="h-8 w-10 shrink-0 rounded object-cover" />}
-                  <span className="min-w-0">{category.name}</span>
-                </a>
-              </Button>)}
+              {filters.map((f) => { const active = selected === f.value; return <Button key={f.name} type="button" aria-pressed={active} onClick={() => setSelected(f.value)} variant={active ? "default" : "outline"} className={`h-auto min-h-11 justify-start gap-2 whitespace-normal px-2 py-1.5 text-left text-xs font-semibold shadow-none ${active ? "bg-primary-strong" : "text-primary-strong"}`}>
+                {f.image && <img src={f.image} alt="" loading="lazy" className="h-8 w-10 shrink-0 rounded object-cover" />}
+                <span className="min-w-0">{f.name}</span>
+              </Button>; })}
             </nav>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 md:grid-cols-1">
-              {data.sidebarNotes.map((note) => <div key={note.title} className="border-t border-gold/40 pt-3"><h3 className="text-[10px] font-semibold uppercase text-primary">{note.title}</h3><p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{note.text}</p></div>)}
+              {data.sidebarNotes.map((note) => <div key={note.title} className="border-t-2 border-accent-strong/50 pt-3"><h3 className="text-xs font-bold uppercase text-accent-strong">{note.title}</h3><p className="mt-1 text-xs leading-relaxed text-foreground">{note.text}</p></div>)}
             </div>
           </aside>
           <section id="produtos" className="min-w-0" aria-labelledby="products-title">
-            <p className="text-[10px] font-semibold uppercase text-gold">{data.showcase.eyebrow}</p>
-            <h2 id="products-title" className="mb-4 font-display text-3xl text-primary">{data.showcase.title}</h2>
+            <p className="text-[11px] font-bold uppercase text-accent-strong">{data.showcase.eyebrow}</p>
+            <h2 id="products-title" className="mb-4 font-display text-3xl font-bold text-primary-strong">{data.showcase.title}{selected && <span className="text-xl font-semibold"> · {selected}</span>}</h2>
             <div className="product-grid grid items-stretch gap-4">
-              {data.products.map((p, index) => <ProductCard key={`${p.name}-${index}`} {...p} />)}
+              {products.map((p, index) => <ProductCard key={`${p.name}-${index}`} product={p} labels={data.showcase} />)}
             </div>
+            {products.length === 0 && <p className="rounded-lg border border-dashed border-border p-6 text-center text-sm text-foreground">{data.showcase.emptyMessage}</p>}
           </section>
         </div>
       </main>
