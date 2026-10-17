@@ -12,4 +12,12 @@ describe("Maternity showcase data", () => {
   it("does not invent links", () => {
     for (const p of maternidade.products) expect([p.href, p.checkoutHref]).toEqual(["#", "#"]);
   });
+  it("keeps the affiliate invitation as its own call, without an invented destination", () => {
+    expect(maternidade.affiliate).toMatchObject({
+      title: "Indique soluções para mães e ganhe comissões",
+      buttonLabel: "Quero ser afiliado",
+      href: "#",
+    });
+    expect(maternidade.affiliate.text).toContain("comissões");
+  });
 });
