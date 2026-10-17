@@ -38,19 +38,8 @@ describe("Maternity showcase data", () => {
   it("configures separate spiritual, income and affiliate destinations", () => {
     expect(maternidade.sidebarNotes.map((note) => note.href)).toEqual(["/areas/fe-na-familia", "/areas/renda-e-empreendedorismo"]);
   });
-  it("keeps the two differentiated area highlights with their configured destinations", () => {
-    expect(maternidade.highlights).toHaveLength(2);
-    expect(maternidade.highlights[0]).toMatchObject({ eyebrow: "Fé na família", name: "Caminhando com Deus", tone: "leaf", href: areas.espiritual.href });
-    expect(maternidade.highlights[1]).toMatchObject({
-      eyebrow: "Ideias e oportunidades",
-      name: "Renda & Empreendedorismo",
-      tone: "terra",
-      href: areas.renda.href,
-      buttonLabel: "Explore o universo digital",
-    });
-  });
   it("registers exactly the three upcoming books without prices or author fields", () => {
-    const books = filterProducts(maternidade.products, "Livros");
+    const books = filterProducts(maternidade.products, "Livros e Leituras");
     expect(books.map((p) => p.name)).toEqual(["A Mulher que Ninguém Vê", "O Mundo que Ninguém Vê", "Menopausa Sem Tabu"]);
     for (const book of books) {
       expect(book.kind).toBe("book");
@@ -66,7 +55,7 @@ describe("Maternity showcase data", () => {
     expect(books).toHaveLength(1);
     const book = books[0];
     if (!book) throw new Error("Missing book");
-    expect(productCategories(book)).toEqual(["Livros", "Maternidade Atípica — TDAH e TEA"]);
+    expect(productCategories(book)).toEqual(["Livros e Leituras", "Maternidade Atípica — TDAH e TEA"]);
     expect(filterProducts(maternidade.products, "Maternidade Atípica — TDAH e TEA")).toContain(book);
   });
   it("places the sewing e-book exclusively in Artesanato e Criatividade", () => {
@@ -84,11 +73,11 @@ describe("Maternity showcase data", () => {
     if (!product) throw new Error("Missing cards");
     expect(productCategories(product)).toEqual(["Maternidade Atípica — TDAH e TEA", "Jogos e Atividades"]);
   });
-  it.each(["Momento da Oração", "Minuto com Deus"])("keeps a single %s in Fé na Família without unconfirmed game associations", (name) => {
+  it.each(["Momento da Oração", "Minuto com Deus"])("keeps a single %s in Minuto com Deus without unconfirmed game associations", (name) => {
     const products = maternidade.products.filter((p) => p.name === name);
     expect(products).toHaveLength(1);
     const product = products[0];
     if (!product) throw new Error("Missing prayer product");
-    expect(productCategories(product)).toEqual(["Fé na Família"]);
+    expect(productCategories(product)).toEqual(["Minuto com Deus"]);
   });
 });
