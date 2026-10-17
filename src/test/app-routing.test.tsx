@@ -14,4 +14,8 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+  it.each(["/areas/fe-na-familia", "/areas/renda-e-empreendedorismo", "/areas/afiliados"])("matches the provisional area page for %s", (path) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes(path).at(-1)?.routeId).toBe("/areas/$area");
+  });
 });
