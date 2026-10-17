@@ -7,3 +7,4 @@
 - [x] Ativar expansão independente das descrições preservando os textos originais.
 - [x] Centralizar destinos configuráveis e criar página provisória reutilizável para as três áreas.
 - [x] Conferir navegação, testes e leitura no computador e celular.
+- [x] Cadastrar os 23 produtos de maternidade em 10 categorias, com categorias múltiplas e preços provisórios.
