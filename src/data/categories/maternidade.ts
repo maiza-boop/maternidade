@@ -44,6 +44,25 @@ export const maternidade: CategoryData = {
     { title: "Renda & empreendedorismo", text: "Para a mulher que cuida da família, mas também quer construir seus próprios caminhos, desenvolver habilidades e criar novas possibilidades de renda.", href: areas.renda.href },
   ],
   showcase: { eyebrow: "Escolhas para você", title: "Produtos em destaque", emptyMessage: "Ainda não há produtos nesta categoria.", learnLabel: "Conhecer solução", buyLabel: "Comprar agora", readMore: "Leia mais", readLess: "Ler menos" },
+  // Destaques visuais diferenciados, ligados às áreas de areas.ts (endereços preservados).
+  highlights: [
+    {
+      eyebrow: "Fé na família",
+      name: "Caminhando com Deus",
+      description: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus.",
+      buttonLabel: "Explore Caminhando com Deus",
+      href: areas.espiritual.href,
+      tone: "leaf",
+    },
+    {
+      eyebrow: "Ideias e oportunidades",
+      name: "Renda & Empreendedorismo",
+      description: "Descubra ideias, conhecimentos e recursos para desenvolver habilidades, transformar sua criatividade em oportunidades e construir novas possibilidades de renda.",
+      buttonLabel: "Explore o universo digital",
+      href: areas.renda.href,
+      tone: "terra",
+    },
+  ],
   // Chamada da vitrine para novos divulgadores. Mantida separada dos botões de compra.
   affiliate: {
     eyebrow: "Programa de afiliados",
