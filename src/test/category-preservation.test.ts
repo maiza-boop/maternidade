@@ -38,6 +38,17 @@ describe("Maternity showcase data", () => {
   it("configures separate spiritual, income and affiliate destinations", () => {
     expect(maternidade.sidebarNotes.map((note) => note.href)).toEqual(["/areas/fe-na-familia", "/areas/renda-e-empreendedorismo"]);
   });
+  it("keeps the two differentiated area highlights with their configured destinations", () => {
+    expect(maternidade.highlights).toHaveLength(2);
+    expect(maternidade.highlights[0]).toMatchObject({ eyebrow: "Fé na família", name: "Caminhando com Deus", tone: "leaf", href: areas.espiritual.href });
+    expect(maternidade.highlights[1]).toMatchObject({
+      eyebrow: "Ideias e oportunidades",
+      name: "Renda & Empreendedorismo",
+      tone: "terra",
+      href: areas.renda.href,
+      buttonLabel: "Explore o universo digital",
+    });
+  });
   it("registers exactly the three upcoming books without prices or author fields", () => {
     const books = filterProducts(maternidade.products, "Livros");
     expect(books.map((p) => p.name)).toEqual(["A Mulher que Ninguém Vê", "O Mundo que Ninguém Vê", "Menopausa Sem Tabu"]);
