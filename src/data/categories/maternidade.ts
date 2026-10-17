@@ -2,6 +2,8 @@ import p1 from "@/assets/p1.jpg";
 import p2 from "@/assets/p2.jpg";
 import p3 from "@/assets/p3.jpg";
 import p4 from "@/assets/p4.jpg";
+import catLivros from "@/assets/cat-livros.jpg";
+import catFe from "@/assets/cat-fe.jpg";
 import type { CategoryData } from "@/components/category/types";
 import { areas } from "@/data/areas";
 
@@ -36,33 +38,14 @@ export const maternidade: CategoryData = {
     { name: "Culinária e Renda na Cozinha", image: p2 },
     { name: "Artesanato e Criatividade", image: p3 },
     { name: "Festas e Personalizados", image: p2 },
-    { name: "Livros" },
-    { name: "Fé na Família" },
+    { name: "Livros e Leituras", image: catLivros },
+    { name: "Minuto com Deus", image: catFe },
   ],
   sidebarNotes: [
     { title: "Fé na família", text: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus.", href: areas.espiritual.href },
     { title: "Renda & empreendedorismo", text: "Para a mulher que cuida da família, mas também quer construir seus próprios caminhos, desenvolver habilidades e criar novas possibilidades de renda.", href: areas.renda.href },
   ],
   showcase: { eyebrow: "Escolhas para você", title: "Produtos em destaque", emptyMessage: "Ainda não há produtos nesta categoria.", learnLabel: "Conhecer solução", buyLabel: "Comprar agora", readMore: "Leia mais", readLess: "Ler menos" },
-  // Destaques visuais diferenciados, ligados às áreas de areas.ts (endereços preservados).
-  highlights: [
-    {
-      eyebrow: "Fé na família",
-      name: "Caminhando com Deus",
-      description: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus.",
-      buttonLabel: "Explore Caminhando com Deus",
-      href: areas.espiritual.href,
-      tone: "leaf",
-    },
-    {
-      eyebrow: "Ideias e oportunidades",
-      name: "Renda & Empreendedorismo",
-      description: "Descubra ideias, conhecimentos e recursos para desenvolver habilidades, transformar sua criatividade em oportunidades e construir novas possibilidades de renda.",
-      buttonLabel: "Explore o universo digital",
-      href: areas.renda.href,
-      tone: "terra",
-    },
-  ],
   // Chamada da vitrine para novos divulgadores. Mantida separada dos botões de compra.
   affiliate: {
     eyebrow: "Programa de afiliados",
@@ -106,13 +89,13 @@ export const maternidade: CategoryData = {
     { provisional: true, category: "Festas e Personalizados", name: "Kit Festa", image: p2, description: "Kit com materiais para festas, para apoiar a família na organização de comemorações infantis.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
     { provisional: true, category: "Artesanato e Criatividade", extraCategories: ["Festas e Personalizados"], name: "Matrizes que Encantam", image: p3, description: "Coleção de matrizes para trabalhos criativos e personalizados, para projetos de artesanato.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
     { provisional: true, category: "Culinária e Renda na Cozinha", extraCategories: ["Alimentação e Nutrição"], name: "Lancheiras Inteligentes", image: p2, description: "Material sobre o preparo de lanches para crianças, para ajudar a família a organizar a lancheira do dia a dia.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
-    { kind: "book", category: "Livros", name: "A Mulher que Ninguém Vê", description: "Uma reflexão sobre a identidade, o recomeço e o valor da mulher.", status: "Em breve", href: "#", checkoutHref: "#" },
-    { kind: "book", category: "Livros", extraCategories: ["Maternidade Atípica — TDAH e TEA"], name: "O Mundo que Ninguém Vê", description: "Um olhar sobre TDAH, empatia e inclusão para compreender o universo de uma criança.", status: "Em breve", href: "#", checkoutHref: "#" },
-    { kind: "book", category: "Livros", name: "Menopausa Sem Tabu", description: "Conhecimento e autocuidado para a qualidade de vida durante a menopausa.", status: "Em breve", href: "#", checkoutHref: "#" },
+    { kind: "book", category: "Livros e Leituras", name: "A Mulher que Ninguém Vê", description: "Uma reflexão sobre a identidade, o recomeço e o valor da mulher.", status: "Em breve", href: "#", checkoutHref: "#" },
+    { kind: "book", category: "Livros e Leituras", extraCategories: ["Maternidade Atípica — TDAH e TEA"], name: "O Mundo que Ninguém Vê", description: "Um olhar sobre TDAH, empatia e inclusão para compreender o universo de uma criança.", status: "Em breve", href: "#", checkoutHref: "#" },
+    { kind: "book", category: "Livros e Leituras", name: "Menopausa Sem Tabu", description: "Conhecimento e autocuidado para a qualidade de vida durante a menopausa.", status: "Em breve", href: "#", checkoutHref: "#" },
     { category: "Artesanato e Criatividade", name: "60 Produtos de Costura que Vendem Todos os Meses", description: "Ideias de costura e produtos artesanais para confeccionar e vender.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
     { category: "Maternidade Atípica — TDAH e TEA", extraCategories: ["Jogos e Atividades"], name: "Cartas das Emoções", description: "Cartas sobre emoções para momentos de conversa e atividades com a criança.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
     { category: "Maternidade Atípica — TDAH e TEA", extraCategories: ["Jogos e Atividades"], name: "Cartas das Brincadeiras", description: "Cartas de brincadeiras para momentos de atividade e interação com a criança.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
-    { category: "Fé na Família", name: "Momento da Oração", description: "Um convite a momentos de oração em família.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
-    { category: "Fé na Família", name: "Minuto com Deus", description: "Um convite a reservar um momento do dia para a fé e a conexão com Deus.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
+    { category: "Minuto com Deus", name: "Momento da Oração", description: "Um convite a momentos de oração em família.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
+    { category: "Minuto com Deus", name: "Minuto com Deus", description: "Um convite a reservar um momento do dia para a fé e a conexão com Deus.", price: "R$ 0,00", href: "#", checkoutHref: "#" },
   ],
 };
