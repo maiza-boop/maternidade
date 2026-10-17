@@ -37,6 +37,14 @@ export const maternidade: CategoryData = {
     { title: "Renda & empreendedorismo", text: "Para a mulher que cuida da família, mas também quer construir seus próprios caminhos, desenvolver habilidades e criar novas possibilidades de renda." },
   ],
   showcase: { eyebrow: "Escolhas para você", title: "Produtos em destaque", emptyMessage: "Ainda não há produtos nesta categoria.", learnLabel: "Conhecer solução", buyLabel: "Comprar agora", readMore: "Leia mais", readLess: "Ler menos" },
+  // Chamada da vitrine para novos divulgadores. Mantida separada dos botões de compra.
+  affiliate: {
+    eyebrow: "Programa de afiliados",
+    title: "Indique soluções para mães e ganhe comissões",
+    text: "Gostou dos nossos produtos? Você também pode divulgá-los para outras pessoas e ganhar comissões pelas vendas realizadas por meio dos seus links de afiliado.",
+    buttonLabel: "Quero ser afiliado",
+    href: "#", // Endereço da futura página exclusiva do programa ainda não foi informado.
+  },
   footer: {
     title: "Faça parte da nossa comunidade",
     text: "Não encontrou o que procura? Tem uma ideia de produto? Quer sugerir um conteúdo que ajudaria na rotina das mães? Faça parte da nossa comunidade e venha conversar com a gente.",

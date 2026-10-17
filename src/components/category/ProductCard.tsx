@@ -1,11 +1,10 @@
 import { useState } from "react";
 import type { Product } from "./types";
+import { pending } from "./pending";
 import { Button } from "@/components/ui/button";
 
 type Labels = { learnLabel: string; buyLabel: string; readMore: string; readLess: string };
 
-const pending = (href: string) =>
-  href === "#" ? { title: "Link ainda não configurado", onClick: (e: React.MouseEvent) => e.preventDefault() } : {};
 
 export function ProductCard({ product, labels }: { product: Product; labels: Labels }) {
   const { image, secondaryImage, category, name, description, price, href, checkoutHref } = product;
