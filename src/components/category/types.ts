@@ -31,19 +31,6 @@ export type Affiliate = {
   href: string;
 };
 
-export type CategoryHighlight = {
-  /** Pequena chamada acima do nome do destaque. */
-  eyebrow: string;
-  /** Nome principal do destaque. */
-  name: string;
-  description: string;
-  buttonLabel: string;
-  /** Destino configurável; manter vindo de areas.ts. */
-  href: string;
-  /** Tonalidade do bloco: "leaf" (verde) ou "terra" (rosé-terra). */
-  tone: "leaf" | "terra";
-};
-
 export type CategoryData = {
   title: string;
   subtitle: string;
@@ -57,7 +44,6 @@ export type CategoryData = {
   categories: { name: string; image?: string }[];
   sidebarNotes: { title: string; text: string; href: string }[];
   showcase: { eyebrow: string; title: string; emptyMessage: string; learnLabel: string; buyLabel: string; readMore: string; readLess: string };
-  highlights: CategoryHighlight[];
   affiliate: Affiliate;
   footer: { title: string; text: string; linkLabel: string; buttonLabel: string; href: string; signature: string };
 };
