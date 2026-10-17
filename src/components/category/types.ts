@@ -57,6 +57,7 @@ export type CategoryData = {
   categories: { name: string; image?: string }[];
   sidebarNotes: { title: string; text: string; href: string }[];
   showcase: { eyebrow: string; title: string; emptyMessage: string; learnLabel: string; buyLabel: string; readMore: string; readLess: string };
+  highlights: CategoryHighlight[];
   affiliate: Affiliate;
   footer: { title: string; text: string; linkLabel: string; buttonLabel: string; href: string; signature: string };
 };
