@@ -3,6 +3,8 @@ export type Product = {
   provisional?: boolean;
   /** Deve ser igual ao `name` de uma categoria cadastrada em `categories`. */
   category: string;
+  /** Categorias adicionais em que o mesmo produto também aparece (sem duplicar o cadastro). */
+  extraCategories?: string[];
   name: string;
   image: string;
   secondaryImage?: string;

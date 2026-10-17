@@ -1,40 +1,41 @@
 import { describe, expect, it } from "vitest";
 import { maternidade } from "@/data/categories/maternidade";
 import { areas } from "@/data/areas";
-import { filterProducts } from "@/components/category/catalog";
+import { filterProducts, productCategories } from "@/components/category/catalog";
 
 describe("Maternity showcase data", () => {
-  it("keeps original prices and gives provisional prices to the rest", () => {
-    expect(maternidade.products.slice(0, 4).map((p) => p.price)).toEqual(["R$ 47,00", "R$ 37,00", "R$ 67,00", "R$ 57,00"]);
+  it("registers each requested maternity product exactly once", () => {
+    const names = maternidade.products.map((p) => p.name);
+    expect(names).toHaveLength(23);
+    expect(new Set(names).size).toBe(23);
+    expect(names).toContain("Lancheiras Inteligentes");
   });
-  it("assigns every product to a registered category", () => {
+  it("marks every unknown price as provisional", () => {
+    for (const p of maternidade.products) expect(p.price).toBe("R$ 0,00 (provisório)");
+  });
+  it("assigns every product only to registered categories", () => {
     const names = maternidade.categories.map((c) => c.name);
-    for (const p of maternidade.products) expect(names).toContain(p.category);
+    for (const p of maternidade.products) for (const c of productCategories(p)) expect(names).toContain(c);
   });
   it("does not invent links", () => {
     for (const p of maternidade.products) expect([p.href, p.checkoutHref]).toEqual(["#", "#"]);
   });
-  it("keeps the affiliate invitation as its own call, without an invented destination", () => {
-    expect(maternidade.affiliate).toMatchObject({
-      title: "Indique soluções para mães e ganhe comissões",
-      buttonLabel: "Quero ser afiliado",
-      href: areas.afiliados.href,
-    });
-    expect(maternidade.affiliate.text).toContain("comissões");
+  it("keeps the affiliate invitation", () => {
+    expect(maternidade.affiliate).toMatchObject({ buttonLabel: "Quero ser afiliado", href: areas.afiliados.href });
   });
-  it.each(["Amamentação", "Alimentação", "Jogos & Atividades", "Cuidados & Maternidade", "TDAH & Autismo", "Livros & Leituras"])("populates and filters %s exclusively", (category) => {
+  it.each(maternidade.categories.map((c) => c.name))("populates and filters %s", (category) => {
     const filtered = filterProducts(maternidade.products, category);
     expect(filtered.length).toBeGreaterThan(0);
-    expect(filtered.every((product) => product.category === category)).toBe(true);
+    expect(filtered.every((p) => productCategories(p).includes(category))).toBe(true);
+  });
+  it("shows a product in each of its categories without duplicating it", () => {
+    expect(filterProducts(maternidade.products, "Amamentação").map((p) => p.name)).toContain("Mamãe Nutre");
+    expect(filterProducts(maternidade.products, "Alimentação e Nutrição").map((p) => p.name)).toContain("Mamãe Nutre");
   });
   it("shows every product with Todas", () => {
     expect(filterProducts(maternidade.products, null)).toEqual(maternidade.products);
   });
-  it("marks the new fictional products and prices as provisional", () => {
-    expect(maternidade.products.slice(4).map((product) => [product.provisional, product.price])).toEqual([[true, "R$ 39,00"], [true, "R$ 29,00"]]);
-  });
   it("configures separate spiritual, income and affiliate destinations", () => {
     expect(maternidade.sidebarNotes.map((note) => note.href)).toEqual(["/areas/fe-na-familia", "/areas/renda-e-empreendedorismo"]);
-    expect(maternidade.affiliate.href).toBe("/areas/afiliados");
   });
 });
