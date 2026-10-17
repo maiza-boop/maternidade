@@ -14,6 +14,15 @@ export type Product = {
   checkoutHref: string;
 };
 
+export type Affiliate = {
+  eyebrow: string;
+  title: string;
+  text: string;
+  buttonLabel: string;
+  /** Link da página exclusiva do programa ("#" = aguardando endereço). */
+  href: string;
+};
+
 export type CategoryData = {
   title: string;
   subtitle: string;
@@ -27,5 +36,6 @@ export type CategoryData = {
   categories: { name: string; image?: string }[];
   sidebarNotes: { title: string; text: string }[];
   showcase: { eyebrow: string; title: string; emptyMessage: string; learnLabel: string; buyLabel: string; readMore: string; readLess: string };
+  affiliate: Affiliate;
   footer: { title: string; text: string; linkLabel: string; buttonLabel: string; href: string; signature: string };
 };

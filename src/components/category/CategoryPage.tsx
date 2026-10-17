@@ -1,5 +1,6 @@
 import { ProductCard } from "./ProductCard";
 import type { CategoryData } from "./types";
+import { pending } from "./pending";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 import { useState } from "react";
@@ -61,6 +62,22 @@ export function CategoryPage({ data }: { data: CategoryData }) {
             {products.length === 0 && <p className="rounded-lg border border-dashed border-border p-6 text-center text-sm text-foreground">{data.showcase.emptyMessage}</p>}
           </section>
         </div>
+
+        <section id="afiliados" aria-labelledby="affiliate-title" className="affiliate-band mb-10 rounded-2xl bg-primary-strong px-5 py-8 text-primary-foreground sm:px-8 sm:py-10">
+          <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_auto]">
+            <div className="min-w-0">
+              <p className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-accent">
+                <span className="h-px w-5 bg-gold" />
+                {data.affiliate.eyebrow}
+              </p>
+              <h2 id="affiliate-title" className="font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">{data.affiliate.title}</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-primary-foreground/90">{data.affiliate.text}</p>
+            </div>
+            <Button asChild className="w-full rounded-full bg-background px-7 py-6 text-[11px] font-bold uppercase text-primary-strong shadow-soft-lg hover:bg-background/90 md:w-auto">
+              <a href={data.affiliate.href} {...pending(data.affiliate.href, "Endereço da página do programa ainda não configurado")}>{data.affiliate.buttonLabel}</a>
+            </Button>
+          </div>
+        </section>
       </main>
 
       <footer id="comunidade" className="bg-primary text-primary-foreground">
