@@ -10,7 +10,7 @@ export type Area = {
 
 export const areas = {
   maternidade: { slug: "maternidade", title: "Maternidade", description: "Soluções para diferentes momentos da maternidade.", href: "/" },
-  espiritual: { slug: "fe-na-familia", title: "Fé na Família", description: "Uma futura área espiritual relacionada ao projeto Caminhando com Deus.", href: "/areas/fe-na-familia" },
+  espiritual: { slug: "fe-na-familia", title: "Caminhando com Deus", description: "Uma jornada de intimidade com Deus e transformação de vida.", href: "/areas/fe-na-familia" },
   renda: { slug: "renda-e-empreendedorismo", title: "Renda & Empreendedorismo", description: "Uma futura área de renda, empreendedorismo e desenvolvimento profissional.", href: "/areas/renda-e-empreendedorismo" },
   afiliados: { slug: "afiliados", title: "Programa de Afiliados", description: "Uma futura área para produtos e oportunidades de divulgação de diferentes áreas e categorias.", href: "/areas/afiliados" },
 } satisfies Record<string, Area>;

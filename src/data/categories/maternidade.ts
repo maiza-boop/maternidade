@@ -42,8 +42,8 @@ export const maternidade: CategoryData = {
     { name: "Minuto com Deus", image: catFe },
   ],
   sidebarNotes: [
-    { title: "Fé na família", text: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus.", href: areas.espiritual.href },
-    { title: "Renda & empreendedorismo", text: "Para a mulher que cuida da família, mas também quer construir seus próprios caminhos, desenvolver habilidades e criar novas possibilidades de renda.", href: areas.renda.href },
+    { title: "Caminhando com Deus", text: "Uma jornada de intimidade com Deus e transformação de vida.", complementaryText: "Fortaleça sua comunhão com Deus, cultive relacionamentos fundamentados na Palavra e descubra como a presença do Senhor pode transformar o coração, a família e a maneira de viver.", href: areas.espiritual.href, tone: "leaf" },
+    { title: "Renda & Empreendedorismo", text: "Conheça recursos, ideias e materiais para desenvolver habilidades e criar possibilidades de renda.", href: areas.renda.href, tone: "rose" },
   ],
   showcase: { eyebrow: "Escolhas para você", title: "Produtos em destaque", emptyMessage: "Ainda não há produtos nesta categoria.", learnLabel: "Conhecer solução", buyLabel: "Comprar agora", readMore: "Leia mais", readLess: "Ler menos" },
   // Chamada da vitrine para novos divulgadores. Mantida separada dos botões de compra.

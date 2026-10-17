@@ -42,7 +42,7 @@ export type CategoryData = {
   categoriesTitle: string;
   allLabel: string;
   categories: { name: string; image?: string }[];
-  sidebarNotes: { title: string; text: string; href: string }[];
+   sidebarNotes: { title: string; text: string; complementaryText?: string; href: string; tone?: "leaf" | "rose" }[];
   showcase: { eyebrow: string; title: string; emptyMessage: string; learnLabel: string; buyLabel: string; readMore: string; readLess: string };
   affiliate: Affiliate;
   footer: { title: string; text: string; linkLabel: string; buttonLabel: string; href: string; signature: string };
