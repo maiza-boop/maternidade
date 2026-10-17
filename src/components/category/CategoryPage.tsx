@@ -2,26 +2,28 @@ import { ProductCard } from "./ProductCard";
 import type { CategoryData } from "./types";
 import { pending } from "./pending";
 import { Button } from "@/components/ui/button";
-import { Heart } from "lucide-react";
+import { ArrowUpRight, Heart } from "lucide-react";
 import { useState } from "react";
+import { ConfiguredLink } from "./ConfiguredLink";
+import { filterProducts } from "./catalog";
 
 export function CategoryPage({ data }: { data: CategoryData }) {
   const [selected, setSelected] = useState<string | null>(null);
-  const products = selected ? data.products.filter((p) => p.category === selected) : data.products;
+  const products = filterProducts(data.products, selected);
   const filters = [{ name: data.allLabel, value: null as string | null, image: undefined as string | undefined }, ...data.categories.map((c) => ({ name: c.name, value: c.name as string | null, image: c.image }))];
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground">
         <div className="site-width grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3 sm:flex sm:justify-between">
-          <a href="/" className="min-w-0">
+          <ConfiguredLink href="/" className="min-w-0">
             <span className="flex items-center gap-1.5 font-display text-2xl leading-none">
               {data.brand.logo && <img src={data.brand.logo} alt="" className="h-8 w-8 object-contain" />}
               {data.brand.name}<Heart className="h-3 w-3 shrink-0 fill-gold text-gold" />
             </span>
             <span className="mt-1 block text-[10px]">{data.brand.tagline}</span>
-          </a>
+          </ConfiguredLink>
           <nav aria-label="Navegação principal" className="col-span-2 flex flex-wrap gap-x-6 gap-y-2 sm:col-span-1">
-            {data.navigation.map((item) => <Button key={item.label} asChild variant="link" className="h-auto p-0 text-xs text-primary-foreground"><a href={item.href}>{item.label}</a></Button>)}
+            {data.navigation.map((item) => <Button key={item.label} asChild variant="link" className="h-auto p-0 text-xs text-primary-foreground"><ConfiguredLink href={item.href}>{item.label}</ConfiguredLink></Button>)}
           </nav>
         </div>
       </header>
@@ -50,7 +52,7 @@ export function CategoryPage({ data }: { data: CategoryData }) {
               </Button>; })}
             </nav>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 md:grid-cols-1">
-              {data.sidebarNotes.map((note) => <div key={note.title} className="border-t-2 border-accent-strong/50 pt-3"><h3 className="text-xs font-bold uppercase text-accent-strong">{note.title}</h3><p className="mt-1 text-xs leading-relaxed text-foreground">{note.text}</p></div>)}
+              {data.sidebarNotes.map((note) => <Button key={note.title} asChild variant="link" className="block h-auto whitespace-normal rounded-none border-t-2 border-accent-strong/50 p-0 pt-3 text-left no-underline hover:no-underline"><ConfiguredLink href={note.href} className="group"><h3 className="flex items-start justify-between gap-2 text-xs font-bold uppercase text-accent-strong group-hover:underline">{note.title}<ArrowUpRight className="shrink-0" aria-hidden="true" /></h3><p className="mt-1 text-xs font-normal leading-relaxed text-foreground">{note.text}</p></ConfiguredLink></Button>)}
             </div>
           </aside>
           <section id="produtos" className="min-w-0" aria-labelledby="products-title">
@@ -74,7 +76,7 @@ export function CategoryPage({ data }: { data: CategoryData }) {
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-primary-foreground/90">{data.affiliate.text}</p>
             </div>
             <Button asChild className="w-full rounded-full bg-background px-7 py-6 text-[11px] font-bold uppercase text-primary-strong shadow-soft-lg hover:bg-background/90 md:w-auto">
-              <a href={data.affiliate.href} {...pending(data.affiliate.href, "Endereço da página do programa ainda não configurado")}>{data.affiliate.buttonLabel}</a>
+              <ConfiguredLink href={data.affiliate.href} {...pending(data.affiliate.href, "Endereço da página do programa ainda não configurado")}>{data.affiliate.buttonLabel}</ConfiguredLink>
             </Button>
           </div>
         </section>

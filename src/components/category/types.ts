@@ -1,4 +1,6 @@
 export type Product = {
+  /** Exemplo fictício de montagem, não uma oferta comercial definitiva. */
+  provisional?: boolean;
   /** Deve ser igual ao `name` de uma categoria cadastrada em `categories`. */
   category: string;
   name: string;
@@ -19,7 +21,7 @@ export type Affiliate = {
   title: string;
   text: string;
   buttonLabel: string;
-  /** Link da página exclusiva do programa ("#" = aguardando endereço). */
+   /** Destino configurável da página exclusiva do programa. */
   href: string;
 };
 
@@ -34,7 +36,7 @@ export type CategoryData = {
   categoriesTitle: string;
   allLabel: string;
   categories: { name: string; image?: string }[];
-  sidebarNotes: { title: string; text: string }[];
+  sidebarNotes: { title: string; text: string; href: string }[];
   showcase: { eyebrow: string; title: string; emptyMessage: string; learnLabel: string; buyLabel: string; readMore: string; readLess: string };
   affiliate: Affiliate;
   footer: { title: string; text: string; linkLabel: string; buttonLabel: string; href: string; signature: string };

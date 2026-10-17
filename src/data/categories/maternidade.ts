@@ -3,6 +3,7 @@ import p2 from "@/assets/p2.jpg";
 import p3 from "@/assets/p3.jpg";
 import p4 from "@/assets/p4.jpg";
 import type { CategoryData } from "@/components/category/types";
+import { areas } from "@/data/areas";
 
 // Edite aqui os textos e produtos desta categoria.
 // Para criar outra categoria, duplique este arquivo.
@@ -33,8 +34,8 @@ export const maternidade: CategoryData = {
     { name: "Livros & Leituras", image: p2 },
   ],
   sidebarNotes: [
-    { title: "Fé na família", text: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus." },
-    { title: "Renda & empreendedorismo", text: "Para a mulher que cuida da família, mas também quer construir seus próprios caminhos, desenvolver habilidades e criar novas possibilidades de renda." },
+    { title: "Fé na família", text: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus.", href: areas.espiritual.href },
+    { title: "Renda & empreendedorismo", text: "Para a mulher que cuida da família, mas também quer construir seus próprios caminhos, desenvolver habilidades e criar novas possibilidades de renda.", href: areas.renda.href },
   ],
   showcase: { eyebrow: "Escolhas para você", title: "Produtos em destaque", emptyMessage: "Ainda não há produtos nesta categoria.", learnLabel: "Conhecer solução", buyLabel: "Comprar agora", readMore: "Leia mais", readLess: "Ler menos" },
   // Chamada da vitrine para novos divulgadores. Mantida separada dos botões de compra.
@@ -43,7 +44,7 @@ export const maternidade: CategoryData = {
     title: "Indique soluções para mães e ganhe comissões",
     text: "Gostou dos nossos produtos? Você também pode divulgá-los para outras pessoas e ganhar comissões pelas vendas realizadas por meio dos seus links de afiliado.",
     buttonLabel: "Quero ser afiliado",
-    href: "#", // Endereço da futura página exclusiva do programa ainda não foi informado.
+    href: areas.afiliados.href, // Página interna provisória; destino definitivo em areas.ts.
   },
   footer: {
     title: "Faça parte da nossa comunidade",
@@ -60,5 +61,7 @@ export const maternidade: CategoryData = {
     { category: "Alimentação", name: "Produto Exemplo 02", image: p2, description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 37,00" /* provisório */, href: "#", checkoutHref: "#" },
     { category: "Jogos & Atividades", name: "Produto Exemplo 03", image: p3, description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 67,00", href: "#", checkoutHref: "#" },
     { category: "Cuidados & Maternidade", name: "Produto Exemplo 04", image: p4, secondaryImage: p1, description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 57,00" /* provisório */, href: "#", checkoutHref: "#" },
+    { provisional: true, category: "TDAH & Autismo", name: "Caderno de Atividades — Exemplo provisório", image: p3, description: "Um exemplo fictício de material com propostas de brincadeiras e atividades para momentos de aprendizado em família. Este conteúdo demonstra a apresentação do catálogo e será substituído pelas informações do produto definitivo.", price: "R$ 39,00", href: "#", checkoutHref: "#" },
+    { provisional: true, category: "Livros & Leituras", name: "Leituras em Família — Exemplo provisório", image: p2, description: "Um exemplo fictício de seleção de leituras para compartilhar histórias e criar momentos de conexão em família. O nome, a imagem, a descrição e o preço são provisórios e serão substituídos quando o catálogo definitivo estiver pronto.", price: "R$ 29,00", href: "#", checkoutHref: "#" },
   ],
 };

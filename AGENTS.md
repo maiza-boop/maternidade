@@ -11,3 +11,5 @@
 
 - Keep category content, brand, navigation, sidebar, affiliate call and footer in typed category data, rendered through reusable category components; this supports duplication and later manual Elementor reconstruction without copying layout code.
 - Define identity colors and layout spacing in global semantic CSS tokens; this keeps presentation editable without changing category content.
+- Keep cross-area destinations and optional communities in the typed area registry, with a shared provisional area route and configurable links; this enables gradual expansion without duplicating unfinished pages.
+- Keep product filtering and description excerpts in browser-safe pure helpers; this allows testing behavior while preserving each original full description.

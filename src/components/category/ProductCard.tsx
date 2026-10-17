@@ -2,6 +2,8 @@ import { useState } from "react";
 import type { Product } from "./types";
 import { pending } from "./pending";
 import { Button } from "@/components/ui/button";
+import { DESCRIPTION_PREVIEW_LENGTH, descriptionPreview } from "./catalog";
+import { useId } from "react";
 
 type Labels = { learnLabel: string; buyLabel: string; readMore: string; readLess: string };
 
@@ -9,7 +11,8 @@ type Labels = { learnLabel: string; buyLabel: string; readMore: string; readLess
 export function ProductCard({ product, labels }: { product: Product; labels: Labels }) {
   const { image, secondaryImage, category, name, description, price, href, checkoutHref } = product;
   const [open, setOpen] = useState(false);
-  const long = description.length > 90;
+  const descriptionId = useId();
+  const long = description.length > DESCRIPTION_PREVIEW_LENGTH;
   return (
     <article className="product-card flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-soft transition-shadow hover:shadow-soft-lg">
       <div className="relative">
@@ -19,12 +22,12 @@ export function ProductCard({ product, labels }: { product: Product; labels: Lab
       <div className="flex flex-1 flex-col gap-2 p-3.5">
         <span className="text-[11px] font-bold uppercase tracking-wide text-accent-strong">{category}</span>
         <h3 className="font-display text-2xl font-bold leading-tight text-primary-strong">{name}</h3>
-        <p className="break-words text-sm leading-relaxed text-foreground">
-          {long && !open ? `${description.slice(0, 90).trimEnd()}… ` : `${description} `}
+        <p id={descriptionId} className="break-words text-sm leading-relaxed text-foreground">
+          {long && !open ? `${descriptionPreview(description)} ` : `${description} `}
           {long && (
-            <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className="font-semibold text-accent-strong underline underline-offset-2">
+            <Button variant="link" type="button" aria-controls={descriptionId} aria-expanded={open} onClick={() => setOpen((value) => !value)} className="inline h-auto whitespace-normal p-0 align-baseline text-sm font-semibold text-accent-strong underline underline-offset-2">
               {open ? labels.readLess : labels.readMore}
-            </button>
+            </Button>
           )}
         </p>
         <div className="mt-auto border-t border-border pt-3">
