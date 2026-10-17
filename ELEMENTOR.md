@@ -3,7 +3,7 @@
 Esta página não é um modelo JSON do Elementor. Sua reprodução é manual.
 
 ## Conteúdo
-`src/data/categories/maternidade.ts` reúne marca, apresentação, categorias, textos laterais, produtos, chamada para afiliados, botões e rodapé. Duplique esse arquivo para preparar outra categoria. Cada produto possui imagem, imagem secundária opcional, categoria, nome, descrição, preço opcional, texto do botão e endereço individual.
+`src/data/categories/maternidade.ts` reúne marca, apresentação, categorias, textos laterais, produtos, destaques das áreas, chamada para afiliados, botões e rodapé. Duplique esse arquivo para preparar outra categoria. Cada produto possui imagem, imagem secundária opcional, categoria, nome, descrição, preço opcional, texto do botão e endereço individual.
 
 Os endereços comerciais `#` estão identificados por comentários e pelo título exibido ao passar o ponteiro. Substitua-os pelos destinos reais antes de divulgar a página. Os preços de exemplo existentes foram preservados, não validados como preços comerciais. Os dois novos produtos fictícios têm `provisional: true`, nomes identificados e preços fictícios.
 
@@ -16,8 +16,9 @@ Cada produto mantém uma única descrição completa. O trecho inicial é calcul
 1. Cabeçalho verde: marca e navegação.
 2. Apresentação: título, subtítulo, mensagem, introdução e foto de mãe e bebê.
 3. Vitrine: coluna lateral de categorias e coluna principal de produtos.
-4. Faixa de afiliados: fundo verde-escuro, título, texto de convite e botão em creme. Fica entre a vitrine e o rodapé, separada dos botões de compra dos produtos.
-5. Rodapé verde: convite à comunidade, botão, marca e assinatura.
+4. Destaques das áreas: dois blocos lado a lado no computador, um sobre o outro no celular — “Caminhando com Deus” em verde folha e “Renda & Empreendedorismo” em rosé-terra — com chamada, título, texto e botão em creme com detalhes dourados. Ficam entre a vitrine e a faixa de afiliados e usam os destinos de areas.ts.
+5. Faixa de afiliados: fundo verde-escuro, título, texto de convite e botão em creme. Fica entre os destaques e o rodapé, separada dos botões de compra dos produtos.
+6. Rodapé verde: convite à comunidade, botão, marca e assinatura.
 
 Use três colunas de produtos no computador, duas nas telas intermediárias e uma no celular. A lateral passa para cima dos produtos no celular. Os cartões devem ter a mesma altura por linha; foto em proporção 4:3, conteúdo flexível e botão na base. A foto secundária opcional fica sobre a foto principal.
 
