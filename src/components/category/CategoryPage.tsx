@@ -9,8 +9,6 @@ import { filterProducts } from "./catalog";
 
 export function CategoryPage({ data }: { data: CategoryData }) {
   const [selected, setSelected] = useState<string | null>(null);
-  // Protege páginas de categorias ainda sem o campo "highlights" (ex.: cópias antigas do arquivo de dados).
-  const highlights = data.highlights ?? [];
   const products = filterProducts(data.products, selected);
   const filters = [{ name: data.allLabel, value: null as string | null, image: undefined as string | undefined }, ...data.categories.map((c) => ({ name: c.name, value: c.name as string | null, image: c.image }))];
   return (
