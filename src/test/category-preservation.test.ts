@@ -1,13 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { maternidade } from "@/data/categories/maternidade";
 
-describe("Existing maternity product information", () => {
-  it("preserves all four existing products without adding commercial details", () => {
-    expect(maternidade.products.map(({ price, href }) => ({ price, href }))).toEqual([
-      { price: "R$ 47,00", href: "#" },
-      { price: undefined, href: "#" },
-      { price: "R$ 67,00", href: "#" },
-      { price: undefined, href: "#" },
-    ]);
+describe("Maternity showcase data", () => {
+  it("keeps original prices and gives provisional prices to the rest", () => {
+    expect(maternidade.products.map((p) => p.price)).toEqual(["R$ 47,00", "R$ 37,00", "R$ 67,00", "R$ 57,00"]);
+  });
+  it("assigns every product to a registered category", () => {
+    const names = maternidade.categories.map((c) => c.name);
+    for (const p of maternidade.products) expect(names).toContain(p.category);
+  });
+  it("does not invent links", () => {
+    for (const p of maternidade.products) expect([p.href, p.checkoutHref]).toEqual(["#", "#"]);
   });
 });

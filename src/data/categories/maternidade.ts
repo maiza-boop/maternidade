@@ -22,21 +22,21 @@ export const maternidade: CategoryData = {
     { label: "Contato", href: "#comunidade" },
   ],
   categoriesTitle: "Categorias",
-  // Os endereços # são provisórios; substitua-os pelos destinos definitivos.
+  allLabel: "Todas",
+  // Para criar uma categoria nova, adicione-a aqui e use o mesmo nome no campo `category` do produto.
   categories: [
-    { name: "Todas", href: "#produtos" },
-    { name: "Amamentação", image: p1, href: "#" },
-    { name: "Alimentação", image: p2, href: "#" },
-    { name: "Jogos & Atividades", image: p3, href: "#" },
-    { name: "Cuidados & Maternidade", image: p1, href: "#" },
-    { name: "TDAH & Autismo", image: p4, href: "#" },
-    { name: "Livros & Leituras", image: p2, href: "#" },
+    { name: "Amamentação", image: p1 },
+    { name: "Alimentação", image: p2 },
+    { name: "Jogos & Atividades", image: p3 },
+    { name: "Cuidados & Maternidade", image: p1 },
+    { name: "TDAH & Autismo", image: p4 },
+    { name: "Livros & Leituras", image: p2 },
   ],
   sidebarNotes: [
     { title: "Fé na família", text: "Para mães que desejam cultivar a fé em família e transformar momentos simples em oportunidades de oração, aprendizado e conexão com Deus." },
     { title: "Renda & empreendedorismo", text: "Para a mulher que cuida da família, mas também quer construir seus próprios caminhos, desenvolver habilidades e criar novas possibilidades de renda." },
   ],
-  showcase: { eyebrow: "Escolhas para você", title: "Produtos em destaque" },
+  showcase: { eyebrow: "Escolhas para você", title: "Produtos em destaque", emptyMessage: "Ainda não há produtos nesta categoria.", learnLabel: "Conhecer solução", buyLabel: "Comprar agora", readMore: "Leia mais", readLess: "Ler menos" },
   footer: {
     title: "Faça parte da nossa comunidade",
     text: "Não encontrou o que procura? Tem uma ideia de produto? Quer sugerir um conteúdo que ajudaria na rotina das mães? Faça parte da nossa comunidade e venha conversar com a gente.",
@@ -45,10 +45,12 @@ export const maternidade: CategoryData = {
     href: "#", // Link da comunidade ainda não fornecido.
     signature: "com carinho, para cada fase.",
   },
+  // Cada produto é independente: duplique um bloco para criar outro.
+  // PROVISÓRIO: categorias dos produtos de exemplo, preços marcados e links "#" aguardam dados reais.
   products: [
-    { image: p1, secondaryImage: p2, category: "Maternidade", name: "Produto Exemplo 01", description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 47,00", href: "#", buttonLabel: "CONHECER SOLUÇÃO" },
-    { image: p2, category: "Maternidade", name: "Produto Exemplo 02", description: "Uma solução prática para ajudar em um momento específico da maternidade.", href: "#", buttonLabel: "CONHECER SOLUÇÃO" },
-    { image: p3, category: "Maternidade", name: "Produto Exemplo 03", description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 67,00", href: "#", buttonLabel: "CONHECER SOLUÇÃO" },
-    { image: p4, secondaryImage: p1, category: "Maternidade", name: "Produto Exemplo 04", description: "Uma solução prática para ajudar em um momento específico da maternidade.", href: "#", buttonLabel: "CONHECER SOLUÇÃO" },
+    { category: "Amamentação", name: "Produto Exemplo 01", image: p1, secondaryImage: p2, description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 47,00", href: "#", checkoutHref: "#" },
+    { category: "Alimentação", name: "Produto Exemplo 02", image: p2, description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 37,00" /* provisório */, href: "#", checkoutHref: "#" },
+    { category: "Jogos & Atividades", name: "Produto Exemplo 03", image: p3, description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 67,00", href: "#", checkoutHref: "#" },
+    { category: "Cuidados & Maternidade", name: "Produto Exemplo 04", image: p4, secondaryImage: p1, description: "Uma solução prática para ajudar em um momento específico da maternidade.", price: "R$ 57,00" /* provisório */, href: "#", checkoutHref: "#" },
   ],
 };
