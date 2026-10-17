@@ -67,28 +67,7 @@ export function CategoryPage({ data }: { data: CategoryData }) {
           </section>
         </div>
 
-        {highlights.length > 0 && (
-          <section aria-label="Destaques das áreas" className="grid gap-4 pb-12 md:grid-cols-2">
-            {highlights.map((highlight) => (
-              <article
-                key={highlight.name}
-                className={`flex flex-col rounded-2xl px-6 py-8 shadow-soft-lg sm:px-8 sm:py-10 ${highlight.tone === "leaf" ? "bg-primary text-primary-foreground" : "bg-terracotta text-primary-foreground"}`}
-              >
-                <p className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-gold">
-                  <span className="h-px w-5 bg-gold" />
-                  {highlight.eyebrow}
-                </p>
-                <h2 className="font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">{highlight.name}</h2>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/90">{highlight.description}</p>
-                <Button asChild className="mt-6 w-fit rounded-full bg-background px-6 py-5 text-[11px] font-bold uppercase text-primary-strong shadow-soft hover:bg-background/90">
-                  <ConfiguredLink href={highlight.href}>{highlight.buttonLabel}</ConfiguredLink>
-                </Button>
-              </article>
-            ))}
-          </section>
-        )}
-
-        <section id="afiliados" aria-labelledby="affiliate-title" className="affiliate-band mb-10 rounded-2xl bg-primary-strong px-5 py-8 text-primary-foreground sm:px-8 sm:py-10">
+        <section id="afiliados" aria-labelledby="affiliate-title" className="affiliate-band mb-10 rounded-2xl bg-terracotta px-5 py-8 text-primary-foreground sm:px-8 sm:py-10">
           <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_auto]">
             <div className="min-w-0">
               <p className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-accent">
